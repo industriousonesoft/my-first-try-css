@@ -1,0 +1,86 @@
+:root {
+    box-sizing: border-box;
+}
+
+*,
+::before
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body * + * {
+    margin-top: 1.5em;
+}
+
+.container {
+    /* 设置最大宽度，实现双容器模式，外层容器为body，内层容器为container */
+    max-width: 1080px;
+    /* 左右外边距设置为auto，能够让内层容器自动填充可用空间， 从而实现水平居中的效果 */
+    margin: 0 auto;
+}
+
+header {
+    padding: 1em 1.5em;
+    color: #fff;
+    background-color: #0072b0;
+    border-radius: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+.main {
+    padding: 0 1.5em;
+    background-color: #fff;
+    border-radius: 0.5em;
+}
+
+.clearfix::before
+.clearfix::after {
+    /* 防止伪元素外边距折叠 */
+    display: table;
+    content: " ";
+}
+
+.clearfix::after {
+    /* 将伪元素的display设置为非inline，并给定一个content值，以便伪元素出现在文档中，但是对用户是不可见的 */
+    display: block;
+    content: " ";
+    /* 让伪元素清除所有浮动 */
+    clear: both;
+}
+
+.media {
+    float: left;
+    /* 右侧和底部添加外边距 */
+    margin: 0 1.5em 1.5em 0;
+    /* 宽度=父元素宽度的50%（一行容纳两个media）- 父元素的左右内边距 - media的作用内边距*/
+    width: calc(50% - 3em - 1.5em );
+    padding: 1.5em;
+    background-color: #eee;
+    border-radius: 0.5em;
+}
+
+.media:nth-child(odd) {
+    clear: left;
+}
+
+.media-image {
+    float: right;
+}
+
+.media-body {
+    /* 覆盖猫头鹰选择器添加的顶部外边距 */
+    margin-top: 0;
+    /* 创建BFC，防止正文与浮动的图片重叠 */
+    overflow: auto;
+    padding: 0 1em;
+}
+
+.media-body h4 {
+    /* 覆盖用户代理样式所添加的顶部外边距 */
+    margin-top: 0;
+}

@@ -1,0 +1,56 @@
+/* 根元素设置为 border-box */
+:root {
+    box-sizing: border-box;
+}
+
+/* 告诉其他所有元素（*）和伪元素继承:root盒模型 */
+/* 此处使用了通用选择器*，如果直接在此处直接设置盒模型可以在引入第三方组件时出现冲突，而使用继承的方式修改盒模型可避免 */
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.wrapper {
+    margin-left: -1.5em;
+    margin-right: -1.5em;
+}
+
+.container {
+    /* 使用表格布局 */
+    display: table;
+    /* 不同于block元素，table默认情况下不会扩展到100%， 因此需要明确指定表格宽度等于容器宽度 */
+    width: 100%;
+    /* 设置单元格之间的水平间距为1.5em，垂直间距为0 */
+    border-spacing: 1.5em 0;
+}
+
+header {
+    color: #fff;
+    background-color: #0072b0;
+    border-radius: .5em;
+}
+
+.main {
+    display: table-cell;
+    width: 70%;
+    background-color: #fff;
+    border-radius: .5em;
+}
+
+.sidebar {
+    display: table-cell;
+    /* 使用table-cell替换float后，margin不作用于table-cell元素 */
+    /* 此处使用em指定间距而非百分百，是因为百分比相对于父元素的宽度，而em参考值是字体大小，字体通常是全局的，因此使用em一致性更好 */
+    /* width: calc(30% - 1.5em); */
+    /* margin-left: 1.5em; */
+    width: 30%;
+    padding: 1.5em;
+    background-color: #fff;
+    border-radius: .5em;
+}

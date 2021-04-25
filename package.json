@@ -7,7 +7,8 @@
   "author": "industriousonesoft <industriousonesoft@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js"
+    "first-demo": "webpack-dev-server --config webpack.first.js",
+    "second-demo": "webpack-dev-server --config webpack.second.js"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0-alpha.0",

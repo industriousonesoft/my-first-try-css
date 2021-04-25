@@ -1,0 +1,69 @@
+/* 根元素设置为 border-box */
+:root {
+    box-sizing: border-box;
+}
+
+/* 告诉其他所有元素（*）和伪元素继承:root盒模型 */
+/* 此处使用了通用选择器*，如果直接在此处直接设置盒模型可以在引入第三方组件时出现冲突，而使用继承的方式修改盒模型可避免 */
+*,
+::before,
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 使用猫头鹰选择器全局设置上下堆叠的元素之间的间距 */
+/* 猫头鹰选择器：选择相同父级下除第一个元素的其他所有元素 */
+body * + * {
+    margin-top: 1.5em;
+}
+
+header {
+    padding: 1em 1.5em;
+    color: #fff;
+    background-color: #0072b0;
+    border-radius: .5em;
+}
+
+.container {
+    display: flex;
+}
+
+/* 弹性容器内的元素不需要指定display属性 */
+.main {
+    width: 70%;
+    background-color: #fff;
+    border-radius: 0.5em;
+    padding: 0em 1.5em;
+}
+
+.sidebar {
+    width: 30%;
+    padding: 1.5em;
+    margin-left: 1.5em;
+    /* 移除猫头鹰选择器全局设置的顶部外边距 */
+    margin-top: 0;
+    background-color: #fff;
+    border-radius: .5em;
+}
+
+.button-link {
+    display: block;
+    padding: 0.5em;
+    color: #fff;
+    background-color: #0090c9;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.sponsors-link {
+    display: block;
+    color: #0072b0;
+    font-weight: bold;
+    text-decoration: none;
+}

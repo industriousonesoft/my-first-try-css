@@ -8,7 +8,8 @@
   "license": "MIT",
   "scripts": {
     "first-demo": "webpack-dev-server --config webpack.first.js",
-    "second-demo": "webpack-dev-server --config webpack.second.js"
+    "second-demo": "webpack-dev-server --config webpack.second.js",
+    "third-demo": "webpack-dev-server --config webpack.third.js"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0-alpha.0",

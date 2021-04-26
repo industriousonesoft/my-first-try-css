@@ -1,0 +1,92 @@
+:root {
+    box-sizing: border-box;
+}
+
+*
+::before
+::after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: #709b90;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 作用域：body所有元素，选中任一个父元素下除了第一个子元素之外的其他所有子元素 */
+body * + * {
+    /* 使用猫头鹰选择器设置全局顶外边距 */
+    margin-top: 1.5em;
+}
+
+.container {
+    /* 双容器模式，用于网页内容居中 */
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.site-nav {
+    display: flex;
+    padding: .5em;
+    list-style-type: none;
+    background-color: #5f4b44;
+    border-radius: .2em;
+}
+
+.site-nav > li {
+    /* 覆盖猫头鹰选择添加的全局顶部外边距 */
+    margin-top: 0;
+}
+
+.site-nav > li > a {
+    /* 让链接成为块元素，这样就能撑开父元素高度 */
+    display: block;
+    padding: .5em 1em;
+    background-color: #cc6b5a;
+    color: white;
+    /* 覆盖链接用户代理样式：下划线 */
+    text-decoration: none;
+}
+
+/* 使用相邻兄弟组合器选中列表中除第一项之外的其余所有列表项 */
+.site-nav > li + li {
+    margin-left: 1.5em;
+}
+
+.site-nav > .nav-right {
+    /* 弹性盒子内使用auto外边距会自动填充所有可用空间 */
+    margin-left: auto;
+}
+
+.tile {
+    padding: 1.5em;
+    background-color: #fff;
+}
+
+/* 设置主容器为flex */
+.main {
+    display: flex;
+}
+
+/* 选中main下除了第一项之外的所以其余所有项，只作用于下一级，不递归 */
+/* 选择器 “> * + *”与 兄弟组合器功能类型，只作用于下一级，区别在于前者是通用匹配，
+不需要指定具体表情类型，而兄弟组合器需要指定具体元素且是同一元素 */
+/* 本例还可以使用兄弟组合器替代：.main > div + div */
+.main > * + * {
+    margin-top: 0;
+    margin-left: 1.5em;
+}
+
+/* olumn-main和column-sidebar的flex-basis值均为0，表示剩余长度为容器本身长度，因此安装flex-grow值划分 */
+.column-main {
+    /* flex: 2等价于
+     flex-grow:2; 
+     flex-shrink: 1（默认值）;
+     flex-basis: 0% （默认值）;
+     */
+    flex: 2;
+}
+
+.column-sidebar {
+    flex: 1;
+}
